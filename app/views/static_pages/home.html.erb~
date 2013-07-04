@@ -1,6 +1,14 @@
 <% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EBM Wage Portal | <%= yield(:title) %></title>
+  </head>
+  <body>
     <h1>EBM Wage Portal</h1>
     <p>
       This is the home page for the
       EBM Wage Portal application.
     </p>
+  </body>
+</html>

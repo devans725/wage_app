@@ -1,0 +1,15 @@
+<% provide(:title, 'Help') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EBM Wage Portal | <%= yield(:title) %></title>
+  </head>
+  <body>
+    <h1>Help</h1>
+    <p>
+      For help please contact:.
+    </p>
+  </body>
+</html>
+
+
