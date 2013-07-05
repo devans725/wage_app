@@ -1,6 +1,10 @@
 WageApp::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
+  get "users/new"
+
+  root to: 'static_pages#home'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/help',   to: 'static_pages#help',   via:'get'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

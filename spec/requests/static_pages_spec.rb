@@ -2,32 +2,20 @@ require 'spec_helper'
 
 describe "Static pages" do
 
+  subject { page }
+
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the content 'EBM Wage Portal'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('EBM Wage Portal')
-    end
-   it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("EBM Wage Portal | Home")
-    end
-   it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Home')
-    end
+    it { should have_content('Wage Portal') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
-  
-describe "Help page" do
 
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Help')
-    end
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_title("EBM Wage Portal | Help")
-    end
+  describe "Help page" do
+    before { visit help_path }
+
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
   end
 end
-
