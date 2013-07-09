@@ -1,0 +1,13 @@
+<footer class="footer">
+  <small>
+    <a href="#">EBM Computer Services, Inc.</a>
+    
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "Help",   '#' %></li>
+    </ul>
+  </nav>
+</footer>
+
+
