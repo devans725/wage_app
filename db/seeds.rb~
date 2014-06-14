@@ -1,0 +1,50 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.new
+user.name = 'Dave Evans'
+user.email = 'devans@mail.com'
+user.password = 'daveevans'
+user.password_confirmation = 'daveevans'
+user.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 1
+wtwo.year = 2012
+wtwo.path = '/docs/sm2012.pdf'
+wtwo.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 1
+wtwo.year = 2013
+wtwo.path = '/docs/sm2013.pdf'
+wtwo.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 2
+wtwo.year = 2012
+wtwo.path = '/docs/dk2012.pdf'
+wtwo.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 2
+wtwo.year = 2013
+wtwo.path = '/docs/dk2013.pdf'
+wtwo.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 3
+wtwo.year = 2012
+wtwo.path = '/docs/de2012.pdf'
+wtwo.save!
+
+wtwo = Wtwo.new
+wtwo.user_id = 3
+wtwo.year = 2013
+wtwo.path = '/docs/de2013.pdf'
+wtwo.save!

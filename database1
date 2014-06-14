@@ -1,0 +1,288 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.10
+-- Dumped by pg_dump version 9.1.10
+-- Started on 2013-12-06 18:47:57 CST
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 166 (class 3079 OID 11681)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1921 (class 0 OID 0)
+-- Dependencies: 166
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 161 (class 1259 OID 16387)
+-- Dependencies: 5
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO dave;
+
+--
+-- TOC entry 163 (class 1259 OID 16393)
+-- Dependencies: 5
+-- Name: users; Type: TABLE; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    name character varying(255),
+    email character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    password_digest character varying(255),
+    remember_token character varying(255)
+);
+
+
+ALTER TABLE public.users OWNER TO dave;
+
+--
+-- TOC entry 162 (class 1259 OID 16391)
+-- Dependencies: 163 5
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: dave
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO dave;
+
+--
+-- TOC entry 1922 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dave
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- TOC entry 165 (class 1259 OID 16406)
+-- Dependencies: 5
+-- Name: wtwos; Type: TABLE; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE TABLE wtwos (
+    id integer NOT NULL,
+    user_id integer,
+    path character varying(255),
+    year integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.wtwos OWNER TO dave;
+
+--
+-- TOC entry 164 (class 1259 OID 16404)
+-- Dependencies: 5 165
+-- Name: wtwos_id_seq; Type: SEQUENCE; Schema: public; Owner: dave
+--
+
+CREATE SEQUENCE wtwos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.wtwos_id_seq OWNER TO dave;
+
+--
+-- TOC entry 1923 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: wtwos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: dave
+--
+
+ALTER SEQUENCE wtwos_id_seq OWNED BY wtwos.id;
+
+
+--
+-- TOC entry 1798 (class 2604 OID 16396)
+-- Dependencies: 163 162 163
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dave
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- TOC entry 1799 (class 2604 OID 16409)
+-- Dependencies: 164 165 165
+-- Name: id; Type: DEFAULT; Schema: public; Owner: dave
+--
+
+ALTER TABLE ONLY wtwos ALTER COLUMN id SET DEFAULT nextval('wtwos_id_seq'::regclass);
+
+
+--
+-- TOC entry 1909 (class 0 OID 16387)
+-- Dependencies: 161 1914
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: dave
+--
+
+COPY schema_migrations (version) FROM stdin;
+20130709234354
+20130710004937
+20130710010241
+20130711215040
+20130904230855
+\.
+
+
+--
+-- TOC entry 1911 (class 0 OID 16393)
+-- Dependencies: 163 1914
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: dave
+--
+
+COPY users (id, name, email, created_at, updated_at, password_digest, remember_token) FROM stdin;
+2	Donkey Kong	dkong@mail.com	2013-09-26 21:08:44.44251	2013-10-02 03:01:16.255204	$2a$10$nDhPet/DNYDttPe7hKdq9ub3ZLJz6Awn7iGmEjS4UpEIiZq3lxmu.	64e3924068babb7ba0e820534b30b0a51748641b
+1	Super Mario	smario@mail.com	2013-09-24 03:27:56.117879	2013-10-02 03:02:34.828155	$2a$10$Ir77tYkWgPaAKxKbt8MLGet0jkMYhsyOEE/xTIst38DgGtl/eJOaO	0d34db435cfe8036b778f29edf38247b4a733ed7
+\.
+
+
+--
+-- TOC entry 1924 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dave
+--
+
+SELECT pg_catalog.setval('users_id_seq', 3, true);
+
+
+--
+-- TOC entry 1913 (class 0 OID 16406)
+-- Dependencies: 165 1914
+-- Data for Name: wtwos; Type: TABLE DATA; Schema: public; Owner: dave
+--
+
+COPY wtwos (id, user_id, path, year, created_at, updated_at) FROM stdin;
+1	1	'http://s3.amazonaws.com/97de46hk/sm2012.pdf'	2012	\N	\N
+2	1	'http://s3.amazonaws.com/97de46hk/sm2013.pdf'	2013	\N	\N
+3	2	'http://s3.amazonaws.com/97de46hk/dk2012.pdf'	2012	\N	\N
+4	2	'http://s3.amazonaws.com/97de46hk/dk2013.pdf'	2013	\N	\N
+\.
+
+
+--
+-- TOC entry 1925 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: wtwos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: dave
+--
+
+SELECT pg_catalog.setval('wtwos_id_seq', 6, true);
+
+
+--
+-- TOC entry 1804 (class 2606 OID 16401)
+-- Dependencies: 163 163 1915
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: dave; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1807 (class 2606 OID 16411)
+-- Dependencies: 165 165 1915
+-- Name: wtwos_pkey; Type: CONSTRAINT; Schema: public; Owner: dave; Tablespace: 
+--
+
+ALTER TABLE ONLY wtwos
+    ADD CONSTRAINT wtwos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1801 (class 1259 OID 16402)
+-- Dependencies: 163 1915
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- TOC entry 1802 (class 1259 OID 16403)
+-- Dependencies: 163 1915
+-- Name: index_users_on_remember_token; Type: INDEX; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE INDEX index_users_on_remember_token ON users USING btree (remember_token);
+
+
+--
+-- TOC entry 1805 (class 1259 OID 16412)
+-- Dependencies: 165 165 1915
+-- Name: index_wtwos_on_user_id_and_year; Type: INDEX; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE INDEX index_wtwos_on_user_id_and_year ON wtwos USING btree (user_id, year);
+
+
+--
+-- TOC entry 1800 (class 1259 OID 16390)
+-- Dependencies: 161 1915
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: dave; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- TOC entry 1920 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2013-12-06 18:47:57 CST
+
+--
+-- PostgreSQL database dump complete
+--
+
