@@ -7,6 +7,7 @@ gem 'bcrypt-ruby', '3.1.0'
 gem 'unicorn'
 gem 'therubyracer'
 gem 'aws-sdk'
+gem 'aws-s3'
 gem 'pg', '0.15.1'
 
 group :development, :test do

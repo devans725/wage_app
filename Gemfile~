@@ -6,9 +6,11 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.0'
 gem 'unicorn'
 gem 'therubyracer'
+gem 'aws-sdk'
+gem 'pg', '0.15.1'
 
 group :development, :test do
-  gem 'pg', '0.15.1'
+  #gem 'pg', '0.15.1'
   gem 'activesupport', '4.1.0'
   gem 'rspec-rails', '2.13.1'
 end
@@ -31,6 +33,6 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
+  #gem 'pg', '0.15.1'
   gem 'rails_12factor'
 end

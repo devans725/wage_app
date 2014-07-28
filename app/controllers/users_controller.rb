@@ -23,16 +23,13 @@ class UsersController < ApplicationController
   end
 
   def download
-    require 'open-uri'
     @user = User.find(params[:id])
     @wtwos = @user.wtwos.select('path, year')
-    
     @wtwos = @wtwos.where(year: params[:year])
     @wtwos = @wtwos.first
-    
-    @filename = "http://97de46hk.s3.amazonaws.com/" + "#{@wtwos[:path]}"
-    #@filename = Rails.root.to_s+"#{@wtwos[:path]}"
-    @data = open(@filename).read
+    s3 = AWS::S3.new()
+    @url = s3.buckets[S3_BUCKET_NAME].objects[@wtwos[:path]].url_for(:read, :response_content_type => "application/pdf", :expires => 2*60)
+    @data = @url.read
     send_data @data, :type => 'application/pdf', :filename => 'doc.pdf'
   end
 
