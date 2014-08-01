@@ -12,6 +12,12 @@
 <div class="span8">
     <h3>Pay Stub</h3>
       <ol class="microposts">
-         <%= render @paystubs %>
+         <%= render @wtwos %>
       </ol>
  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
