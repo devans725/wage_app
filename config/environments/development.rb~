@@ -24,7 +24,5 @@ WageApp::Application.configure do
 
   # Debug mode disables concatenation and preprocessing of assets.
   config.assets.debug = true
-  
-  # s3 bucket name
-  S3_BUCKET_NAME = '97de46hk'
+
 end
