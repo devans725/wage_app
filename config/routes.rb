@@ -7,7 +7,7 @@ WageApp::Application.routes.draw do
             
   resources :sessions, only: [:new, :create, :destroy]
   resources :wtwos, only: [:show]
-  root to: 'static_pages#home'
+  root to: 'sessions#new'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

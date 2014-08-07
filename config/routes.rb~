@@ -1,7 +1,8 @@
 WageApp::Application.routes.draw do
   resources :users do
-     resources :wtwos
-
+     member do
+       get :download
+     end
   end
             
   resources :sessions, only: [:new, :create, :destroy]
