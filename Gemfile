@@ -9,7 +9,7 @@ gem 'therubyracer'
 gem 'aws-sdk', '~> 1'
 gem 'aws-sdk-resources', '~> 2'
 gem 'aws-s3'
-gem 'pg', '0.15.1'
+gem 'pg', '0.18.4'
 
 group :development, :test do
   #gem 'pg', '0.15.1'
