@@ -132,7 +132,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
-    multi_json (1.14.1)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -230,9 +229,8 @@ GEM
     tilt (2.0.10)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
-    uglifier (2.1.1)
-      execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unicorn (5.5.5)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -266,7 +264,7 @@ DEPENDENCIES
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.0.0)
   therubyracer
-  uglifier (= 2.1.1)
+  uglifier (>= 2.7)
   unicorn
 
 RUBY VERSION
