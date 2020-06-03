@@ -63,11 +63,11 @@ GEM
       xml-simple
     aws-sdk (1.67.0)
       aws-sdk-v1 (= 1.67.0)
-    aws-sdk-core (2.11.519)
+    aws-sdk-core (2.11.520)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.519)
-      aws-sdk-core (= 2.11.519)
+    aws-sdk-resources (2.11.520)
+      aws-sdk-core (= 2.11.520)
     aws-sdk-v1 (1.67.0)
       json (~> 1.4)
       nokogiri (~> 1)
@@ -228,8 +228,6 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    turbolinks (1.1.1)
-      coffee-rails
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (2.1.1)
@@ -268,7 +266,6 @@ DEPENDENCIES
   sdoc (= 0.3.20)
   selenium-webdriver (= 2.0.0)
   therubyracer
-  turbolinks (= 1.1.1)
   uglifier (= 2.1.1)
   unicorn
 
