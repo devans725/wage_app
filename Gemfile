@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 7.0.4'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.0'
 gem 'unicorn'
